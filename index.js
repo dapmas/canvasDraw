@@ -11,3 +11,6 @@
  server.listen(PORT, null, function() {
    console.log(`Listening on port: ${PORT}`);
  });
+
+ // Middleware
+app.use(express.static(__dirname + '/public'));
