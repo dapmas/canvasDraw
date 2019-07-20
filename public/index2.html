@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    .content {
+      position: relative;
+    }
+
+    canvas {
+      border: 1px solid #d3d3d3;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <div class='content'>
+    <video class="video" id="vd1" autoPlay
+      src="http://upload.wikimedia.org/wikipedia/commons/7/79/Big_Buck_Bunny_small.ogv"></video>
+    <canvas id="myCanvas"></canvas>
+  </div>
+  <div class='controls'>
+    <button id="btn-control">Click</button>
+  </div>
+
+  <script>
+    var video = document.getElementById("vd1");
+    var btn = document.getElementById("btn-control");
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+    c.width = 240;
+    c.height = 134;
+    ctx.fillStyle = "red";
+    ctx.fillRect(20, 20, 75, 50);
+
+    //Turn transparency on
+    ctx.globalAlpha = 0.2;
+    ctx.fillStyle = "blue";
+    ctx.fillRect(50, 50, 75, 50);
+    ctx.fillStyle = "green";
+    ctx.fillRect(80, 80, 75, 50);
+
+    btn.addEventListener('click', function () {
+      if (!video.paused) video.pause();
+      else video.play();
+    }, false);
+  </script>
+</body>
+
+</html>

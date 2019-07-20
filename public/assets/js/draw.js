@@ -11,6 +11,19 @@ canvas.height = parseInt(paintStyle.getPropertyValue('height'));
 
 let mouse = {x: 0, y: 0};
 
+var video = document.getElementById('video');
+
+video.addEventListener('play', function () {
+  var $this = this; //cache
+  (function loop() {
+    if (!$this.paused && !$this.ended) {
+      c.drawImage($this, 0, 0);
+      setTimeout(loop, 1000 / 60); // drawing at 30fps
+    }
+  })();
+}, 0);
+
+
 canvas.addEventListener('mousemove', function(e) {
   mouse.x = e.pageX - this.offsetLeft;
   mouse.y = e.pageY - this.offsetTop;
