@@ -21,13 +21,13 @@ c.lineJoin = 'round';
 c.lineCap = 'round';
 c.strokeStyle = '#FF0000';
 
-canvas.addEventListener('mousedown', function(e) {
+canvas.addEventListener('mousedown', function() {
   c.beginPath();
   c.moveTo(mouse.x, mouse.y);
   canvas.addEventListener('mousemove', onPaint, false);
 }, false);
 
-canvas.addEventListener('mouseup', function (e) {
+canvas.addEventListener('mouseup', function () {
   canvas.removeEventListener('mousemove', onPaint, false);
 }, false);
 
