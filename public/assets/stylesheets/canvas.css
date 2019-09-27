@@ -1,9 +1,18 @@
-.content {
+body{
+  margin: 0;
+}
+
+.canvas-container {
   position: relative;
+  width: 70vw;
+  /* margin: 0 calc(100vw - 30em); */
+  margin-left: 15vw;
+  margin-right: 15vw;
+  height: 400px;
+  background-color: blue;
 }
 
 canvas {
-  /* border: 1px solid #d3d3d3; */
   position: absolute;
   top: 0;
   left: 0;

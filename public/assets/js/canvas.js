@@ -1,39 +1,66 @@
-var video = document.getElementById("vd1");
-var btn = document.getElementById("btn-control");
-var canvas = document.getElementById("myCanvas");
-var c = canvas.getContext("2d");
+const canvasContainer = document.querySelector('div.canvas-container');
+const video = document.getElementById("vd1");
+const videoControl = document.getElementById("video-control");
+const inkStart = document.getElementById("ink-start");
+const inkStop = document.getElementById("ink-stop");
+const inkClear = document.getElementById("ink-clear");
 
-btn.addEventListener('click', function () {
-  if (!video.paused) video.pause();
-  else video.play();
-}, false);
-
+const mouse = {x: 0, y: 0};
 
 
-let mouse = {x: 0, y: 0};
+window.onload = function() {
+  init();
+  window.addEventListener('resize', init, false);
+}
 
-canvas.addEventListener('mousemove', function(e) {
-  mouse.x = e.pageX - this.offsetLeft;
-  mouse.y = e.pageY - this.offsetTop;
-}, false);
+function init() {
+  const canvas = document.getElementById("myCanvas");
+  const c = canvas.getContext("2d");
+  /* If you want to use the full window as the canvas **/
+  // const canvasWidth = window.innerWidth - 5; /** except scrollbars **/
+  // const canvasHeight = window.innerHeight - 5; /** except scrollbars **/
 
-c.lineWidth = 3;
-c.lineJoin = 'round';
-c.lineCap = 'round';
-c.strokeStyle = '#FF0000';
+  /** If you want to use only the height and width of the parent div **/
+  /** In Jquery **/
+  // const canvasWidth = canvasContainer.width();
+  // const canvasHeight = canvasContainer.height();
 
-canvas.addEventListener('mousedown', function() {
-  c.beginPath();
-  c.moveTo(mouse.x, mouse.y);
-  canvas.addEventListener('mousemove', onPaint, false);
-}, false);
+  /** In normal js **/
+  const canvasWidth = canvasContainer.offsetWidth;
+  const canvasHeight = canvasContainer.offsetHeight;
+
+  c.canvas.width = canvasWidth;
+  c.canvas.height = canvasHeight;
+
+  videoControl.addEventListener('click', function () {
+    if (!video.paused) video.pause();
+    else video.play();
+  }, false);
+
+  canvas.addEventListener('mousemove', function(e) {
+    mouse.x = e.pageX - this.offsetLeft;
+    mouse.y = e.pageY - this.offsetTop;
+  }, false);
+
+  c.lineWidth = 3;
+  c.lineJoin = 'round'; 
+  c.lineCap = 'round';
+  c.strokeStyle = '#FF0000';
+
+  canvas.addEventListener('mousedown', function() {
+    c.beginPath();
+    c.moveTo(mouse.x, mouse.y);
+    canvas.addEventListener('mousemove', onPaint, false);
+  }, false);
 
 
-canvas.addEventListener('mouseup', function () {
-  canvas.removeEventListener('mousemove', onPaint, false);
-}, false);
+  canvas.addEventListener('mouseup', function () {
+    canvas.removeEventListener('mousemove', onPaint, false);
+  }, false);
 
-let onPaint = function() {
-  c.lineTo(mouse.x, mouse.y);
-  c.stroke();
+  let onPaint = function() {
+    c.lineTo(mouse.x, mouse.y);
+    c.stroke();
+  }
+
 }
