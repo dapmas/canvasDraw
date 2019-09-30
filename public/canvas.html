@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>CanvasDraw</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/stylesheets/canvas.css" type="text/css">
   </head>
 
@@ -9,16 +11,22 @@
       <div class="chat-container"></div>
       <div class="canvas-container">
           <canvas id="videoCanvas"></canvas>
-          <!-- <video autoPlay id="vd1" src="../assets/videos/1.webm" type="video/webm"></video> -->
-          <!-- <div class="video-controls"> 
-              <button id="video-control">Play/Pause Video</button>
-              <button id="ink-start">Start Inking</button>
-              <button id="ink-stop">Stop Inking</button>
-              <button id="ink-clear">Clear Inking</button>
-            </div> -->
+          <div class="video-container">
+
+              <video autoPlay id="vd1" src="../assets/videos/1.webm" type="video/webm"></video>
+              <div class="video-controls"> 
+                  <button id="video-control">Play/Pause Video</button>
+                  <button id="ink-start">Start Inking</button>
+                  <button id="ink-stop">Stop Inking</button>
+                  <button id="ink-clear">Clear Inking</button>
+              </div>
+          </div>
       </div>
       <div class="video-container"></div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="../assets/js/canvas.js"></script>
   </body>
 </html>
